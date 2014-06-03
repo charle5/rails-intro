@@ -1,12 +1,14 @@
 -#  This file is app/views/movies/index.html.haml
 %h1 All Movies
 
-%table#movies
+%table#movies.pretty
   %thead
     %tr
-      %th Movie Title
+      %th#title_header
+        = sortable "title"
       %th Rating
-      %th Release Date
+      %th#release_date_header
+        = sortable "release_date"
       %th More Info
   %tbody
     - @movies.each do |movie|
