@@ -44,6 +44,9 @@ table#movies th {
   font-weight: bold;
   background-color: wheat;
 }
+.pretty th .hilite {
+  background-color: yellow;
+}
 table#movies th, table#movies td {
   padding: 4px;
   text-align: left;
@@ -58,4 +61,18 @@ form label {
   line-height: 25px;
   font-weight: bold;
   color: maroon;
+}
+
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url(/images/up_arrow.gif);
+}
+
+.pretty th .desc {
+  background-image: url(/images/down_arrow.gif);
 }
