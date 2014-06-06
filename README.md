@@ -1,3 +1,20 @@
+my notes:
+i figured out how to do this with the help of [this](http://railscasts.com/episodes/228-sortable-table-columns) railscast.
+the most difficult part was figuring out haml syntax instead of using erb (which i might actually want to do after the assignment is submitted.)
+
+to get the sorts to work i created a helper method called 'sortable' in application_helper.rb, and created and declared two private helper methods (``sort_column` and `sort_direction`) in the movies controller, making them available to the view.
+
+the purpose of the helper method `sortable` is to obviously sort whatever column is clicked, and to also apply the correct styling. sortable takes two arguments: 1. the name of the column as it appears in the schema; 2. optionally the column header text (in case it's different than the name of the column).
+
+`sort_column` checks to see if the movie object's array of column names (i.e. one of the fields in the movie model) includes a sort param. otherwise it defaults to `name`. this is done to protect against SQL injection.
+
+`sort_direction` does basically the same thing for the same reasons as `sort_column` but instead checks for the presences of `asc` or `dsc`, defaulting to `asc`. 
+
+to get the styling to show up for sorted columns i had to add stuff to application.css. but the real magic happens by taking out `link_to` from the view, putting it in the sortable method, passing it the titleized title followed by two hashes: 1. sort and direction; 2. the css class (`current` in this case).
+
+so what happens is when the column is clicked, the column title gets titleized, the `css_class` is created by sanitizing the params and applying `current` plus whatever sort direction, and all this gets passed to `link_to`.  
+
+
 HW2: RAILS INTRO - ADD FEATURES TO ROTTENPOTATOES
 ---------
 
